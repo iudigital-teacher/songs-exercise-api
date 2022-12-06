@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SongController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,7 @@ Route::group(['prefix' => 'song'], function(){
     Route::delete('{id}/destroy', [SongController::class, 'destroy']);
 
 });
+
+Route::post('login/auth', [
+   AuthController::class, 'authentication' 
+]);

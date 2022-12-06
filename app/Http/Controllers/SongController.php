@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
-    public function all(){
+    public function all(Request $request){
+
+        $token = substr($request->header('Authorization', 'Token <token>'), 6);
+
         $songs = Song::all()->toArray();
         
         return response()->json(
             [
                 'code' => 200,
                 'status' => 'true',
-                'data' => $songs
+                'data' => $songs,
+                'token' => $token
             ]
         );
     }
